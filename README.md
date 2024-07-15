@@ -4,19 +4,19 @@ We are excited to announce the release of Expensive Management - Version 2.0! Th
 
 
 - **Manage Market Price List**: Enter detailed information about items including name, unit price, quantity, and unit type. Assign items to specific months to keep track of market prices over time.
-- 
+  
 - **Manage House Item List**: Choose items from the market price list and specify the quantity needed for the chosen month. Plan your monthly purchases effectively and ensure all necessary items are accounted for.
-- 
+  
 - **Manage Inventory**: Monitor and manage the borrowing of items from reserved quantities for the chosen month. Maintain accurate records of inventory levels to ensure sufficient stock.
-- 
+  
 - **View Lists**: Access and manage detailed market price lists, including options to edit, delete, or duplicate items for different months. View house item lists that show both reserved and purchased data. Display comprehensive data for each item, including required quantity, total price, bought quantity, bought amount, and remaining quantity and amount. Utilize the edit and delete options for efficient management and updates.
-- 
+  
 - **Monthly Management**: All features are organized on a monthly basis, providing a clear and structured approach to managing prices, inventory, and household needs.
 
 
-- ## New Features
-- 
-- ### Personal Expenses Management
+## New Features
+  
+### Personal Expenses Management
 - **Track Personal Expenses:** Easily record and categorize your personal expenses to get a clear view of your spending habits.
 - **Expense Reports:** Generate detailed reports on your personal expenses to analyze and manage your budget better.
 
