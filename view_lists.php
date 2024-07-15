@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 
+//session_start(); // Ensure session is started
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
@@ -78,12 +79,8 @@ function displayHouseItems($conn, $month_year) {
             LEFT JOIN inventory i ON hil.market_item_id = i.market_item_id
             WHERE hil.month = '$month_year'";
 
-    // Debugging: Output the SQL query
-    echo "<!-- SQL: $sql -->";
-
     $result = $conn->query($sql);
 
-    // Debugging: Check if the query was successful
     if ($result === FALSE) {
         echo "<!-- SQL Error (House): " . $conn->error . " -->";
     }
@@ -137,47 +134,146 @@ $month = isset($_POST['month']) ? $_POST['month'] : date('Y-m');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Lists</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .form-container h1 {
+            text-align: center;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container label,
+        .form-container input[type="month"],
+        .form-container input[type="submit"],
+        .form-container table {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        .form-container input[type="submit"] {
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .form-container input[type="submit"]:hover {
+            background: #555;
+        }
+        .form-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .form-container table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .form-container th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 15px;
+            }
+            .form-container table, th, td {
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 10px;
+            }
+            .form-container table, th, td {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>View Lists</h1
+    </header>
     <div class="container">
-        <h1>Market Price List</h1>
 
         <!-- Month Selection Form -->
-        <form method="post">
+        <form method="post" class="form-container">
             <label for="month">Month:</label>
             <input type="month" name="month" id="month" value="<?php echo $month; ?>">
-            <button type="submit">Filter</button>
+            <input type="submit" value="Filter">
         </form>
-
-        <table>
-            <tr>
-                <th>Item Name</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Unit</th>
-                <th>Action</th>
-                <th>Edit</th>
-            </tr>
-            <?php displayMarketItems($conn, $month); ?>
-        </table>
-        <button onclick="duplicateList('<?php echo $month; ?>')">Duplicate Market Price List</button>
+        <h1>Market Price List</h1>
+        <div class="form-container">
+            <table>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Action</th>
+                    <th>Edit</th>
+                </tr>
+                <?php displayMarketItems($conn, $month); ?>
+            </table>
+            <button onclick="duplicateList('<?php echo $month; ?>')">Duplicate Market Price List</button>
+        </div>
 
         <h1>House Item List</h1>
 
-        <table>
-            <tr>
-                <th>Item Name</th>
-                <th>Required Quantity</th>
-                <th>Total Price</th>
-                <th>Bought Quantity</th>
-                <th>Bought Amount</th>
-                <th>Remaining Quantity</th>
-                <th>Remaining Amount</th>
-                <th>Action</th>
-                <th>Edit</th>
-            </tr>
-            <?php displayHouseItems($conn, $month); ?>
-        </table>
+        <div class="form-container">
+            <table>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Required Quantity</th>
+                    <th>Total Price</th>
+                    <th>Bought Quantity</th>
+                    <th>Bought Amount</th>
+                    <th>Remaining Quantity</th>
+                    <th>Remaining Amount</th>
+                    <th>Action</th>
+                    <th>Edit</th>
+                </tr>
+                <?php displayHouseItems($conn, $month); ?>
+            </table>
+        </div>
     </div>
     <script>
     function duplicateList(monthYear) {
@@ -192,5 +288,8 @@ $month = isset($_POST['month']) ? $_POST['month'] : date('Y-m');
         window.location.href = `edit_house_item.php?id=${itemId}`;
     }
     </script>
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> Monthly Expenses Tracker</p>
+    </footer>
 </body>
 </html>
