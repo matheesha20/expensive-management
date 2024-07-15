@@ -18,23 +18,18 @@ We are excited to announce the release of Expensive Management - Version 2.0! Th
   
 ### Personal Expenses Management
 - **Track Personal Expenses:** Easily record and categorize your personal expenses to get a clear view of your spending habits.
-- **Expense Reports:** Generate detailed reports on your personal expenses to analyze and manage your budget better.
 
 ### Bank Accounts Management
 - **Manage Multiple Accounts:** Keep track of multiple bank accounts within the application.
-- **Transaction History:** View the transaction history for each bank account to monitor your financial activities.
 
 ### Loan Management
 - **Track Loans:** Manage your loans by recording loan details, payment schedules, and outstanding balances.
-- **Payment Reminders:** Set up reminders for loan payments to avoid missing due dates.
 
 ### Income Sources Management
 - **Record Income Sources:** Add and manage different sources of income, such as salary, freelance work, or investments.
-- **Income Reports:** Generate reports to see a detailed breakdown of your income sources and analyze your earnings.
 
 ### Summary Report (Monthly)
 - **Monthly Summary:** Get a comprehensive summary report of your expenses, income, loans, and bank account transactions on a monthly basis.
-- **Visual Insights:** Use graphs and charts to visualize your financial data and make informed decisions.
 
 
 ## Installation Guide
